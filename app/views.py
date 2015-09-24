@@ -19,7 +19,7 @@ def add():
     print form.title._value()
 
     return render_template('new.post.html',
-                           title='Add new',
+                           title='Add new',<    
                            form=form)
 
 @app.route('/about')
