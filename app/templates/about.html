@@ -1,0 +1,14 @@
+
+{% extends "layout.html" %}
+<!-- extend base layout -->
+
+
+{% block content %}
+    Tasks:
+    {% for task in tasks %}
+    <p>
+      {{ task.name }}
+    </p>
+    {% endfor %}
+    {{ form.post(size=30, maxlength=140) }}
+{% endblock %}
