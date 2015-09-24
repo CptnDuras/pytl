@@ -2,10 +2,25 @@ from flask import render_template
 from logging import Formatter, FileHandler
 import logging
 from app import app
+from app.models import Task
+from app.forms import PostForm, AddForm
 
 @app.route('/')
 def home():
-    return render_template('main.html')
+    form = PostForm()
+    tasks = Task.query.all()
+    return render_template('main.html', form=form, tasks=tasks)
+
+
+@app.route('/add', methods=['GET', 'POST'])
+def add():
+    form = AddForm()
+    print form.text._value()
+    print form.title._value()
+
+    return render_template('new.post.html',
+                           title='Add new',
+                           form=form)
 
 @app.route('/about')
 def about():

@@ -1,11 +1,12 @@
 from flask_wtf import Form
-from wtforms import TextField, PasswordField
+from flask.ext.wtf import Form
+from wtforms import StringField
 from wtforms.validators import DataRequired, EqualTo, Length
 
-# Set your classes here.
+class PostForm(Form):
+    post = StringField('post', validators=[DataRequired()])
 
-
-class new_task():
-
-    def __init__(self):
-        pass
+class AddForm(Form):
+    title = StringField('title', validators=[DataRequired()])
+    text  = StringField('text', default=False)
+    tags  = StringField('tags', default=False)

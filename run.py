@@ -1,16 +1,8 @@
 from app import app
 
-# Default port:
+# run on port 5000:
 if __name__ == '__main__':
     try:
-        app.run()
+        app.run(host='0.0.0.0', port=5000, debug=True)
     except Exception as ex:
         print ex
-
-
-# Or specify port manually:
-'''
-if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
-'''
