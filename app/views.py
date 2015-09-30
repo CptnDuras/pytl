@@ -1,7 +1,7 @@
 from flask import render_template
 from logging import Formatter, FileHandler
 import logging
-from app import app
+from app import app, db
 from app.models import Task
 from app.forms import PostForm, AddForm
 
@@ -16,10 +16,13 @@ def home():
 def add():
     form = AddForm()
     print form.text._value()
-    print form.title._value()
+    if form.title._value():
+        new_task = Task(form.title._value())
+        db.session.add(new_task)
+        db.session.commit()
 
     return render_template('new.post.html',
-                           title='Add new',<    
+                           title='Add new',
                            form=form)
 
 @app.route('/about')

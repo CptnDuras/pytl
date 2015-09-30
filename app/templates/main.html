@@ -4,11 +4,21 @@
 
 
 {% block content %}
+
     Tasks:
     {% for task in tasks %}
-    <p>
-      {{ task.name }}
-    </p>
+
+    <div class="media">
+      <div class="media-left">
+        <a href="#">
+          <img class="media-object" src="..." alt="...">
+        </a>
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading">{{ task.name }}</h4>
+        {{ task.description }}
+      </div>
+    </div>
     {% endfor %}
     {{ form.post(size=30, maxlength=140) }}
 {% endblock %}
